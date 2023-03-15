@@ -9,17 +9,24 @@
 <script>
 import DataTable from "@/components/DataTable.vue";
 export default {
-  name: "UserV",
+  name: "UserView",
   components: {
     DataTable,
   },
-  mounted() {
-    this.$store.dispatch("getUserDetails");
+  data() {
+    return {
+      userData: [],
+    };
   },
-  computed: {
-    userData() {
-      return this.$store.state.userData;
+  methods: {
+    getUserDetails() {
+      this.$store.getters.client.get(`/users/`).then((response) => {
+        this.userData = response.data;
+      });
     },
+  },
+  mounted() {
+    this.getUserDetails();
   },
 };
 </script>
