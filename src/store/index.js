@@ -1,30 +1,20 @@
 import Vue from "vue";
-import { apiDefaults, axios } from "@/api/index.js";
 import Vuex from "vuex";
+import users from "./modules/users";
+import One from "./modules/one";
+import Two from "./modules/two";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    userData: localStorage.getItem("userData") || [],
-    endpoints: {
-      users: "/users",
-    },
+    count: 2,
   },
-  mutations: {
-    updateUserData(state, res) {
-      localStorage.setItem("userData", res.userData);
-      state.userData = res.userData;
-    },
+  mutations: {},
+  getters: {},
+  modules: {
+    users,
+    a: One,
+    b: Two,
   },
-
-  getters: {
-    client: () => {
-      const apiClient = axios.create({
-        ...apiDefaults,
-      });
-      return apiClient;
-    },
-  },
-  modules: {},
 });
