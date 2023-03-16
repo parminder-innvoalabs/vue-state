@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 // import HomeView from "../views/HomeView.vue";
 import UserView from "../views/UserView.vue";
 import CountView from "../views/CountView.vue";
+import DateView from "../views/DateView.vue";
 
 Vue.use(VueRouter);
 
@@ -16,6 +17,11 @@ const routes = [
     path: "/count",
     name: "count",
     component: CountView,
+  },
+  {
+    path: "/date",
+    name: "DateView",
+    component: DateView,
   },
 ];
 
