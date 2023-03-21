@@ -1,20 +1,19 @@
 import Vue from "vue";
-import Vuex from "vuex";
-import users from "./modules/users";
-import One from "./modules/one";
-import Two from "./modules/two";
+import Vuex, { Store } from "vuex";
+import appModule from "./modules/app";
+import client from "./modules/client";
+import newsModule from "./modules/news";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {
-    count: 2,
-  },
-  mutations: {},
-  getters: {},
-  modules: {
-    users,
-    a: One,
-    b: Two,
-  },
+let modules = {
+  app: appModule,
+  client: client,
+  news: newsModule,
+};
+
+const store = new Store({
+  modules: modules,
 });
+
+export default store;
